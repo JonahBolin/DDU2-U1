@@ -12,6 +12,8 @@ let userWritesACityName = prompt("Vilken stad?");
 console.log("Vilken stad?", userWritesACityName);
 
 const bigDivForNewDivs = document.querySelector("#cities");
+const h2 = document.querySelector("h2");
+
 function createCityButton(cityName) { //Hur vet programmet att cityname hänvisar till en nyckel i arrayen cities??
     const newDiv = document.createElement("div");
     newDiv.classList.add("cityBox");
@@ -21,5 +23,11 @@ function createCityButton(cityName) { //Hur vet programmet att cityname hänvisa
 
 for (i = 0; i < cities.length; i++) {
     createCityButton(cities[i].name)
+}
+
+for (i = 0; i < cities.length; i++) {
+    if (userWritesACityName == cities[i].name) {
+        h2.textContent = `${cities[i].name} (${cities[i].country})`
+    }
 }
 
