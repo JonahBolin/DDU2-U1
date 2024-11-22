@@ -40,3 +40,11 @@ if (city) {
     title.textContent = "Not Found";
 }
 
+//Gör så att knappen med staden som promptet anger ska få svart bakgrundsfärg
+let oneOfTheseBoxesWillBecomeBlackAndWhite = document.querySelectorAll(".cityBox");
+
+oneOfTheseBoxesWillBecomeBlackAndWhite.forEach(box => {
+    if (box.textContent == `${userWritesACityName}`) {
+        box.classList.add("target");
+    }
+});
