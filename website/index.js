@@ -29,5 +29,14 @@ for (i = 0; i < cities.length; i++) {
     if (userWritesACityName == cities[i].name) {
         h2.textContent = `${cities[i].name} (${cities[i].country})`
     }
+let city = cities.find(city => city.name == userWritesACityName);
+
+if (city) {
+    h2.textContent = `${city.name} (${city.country})`;
+    title.textContent = `${city.name}`;
+
+} else {
+    h2.textContent = `${userWritesACityName} finns inte i databasen`;
+    title.textContent = "Not Found";
 }
 
