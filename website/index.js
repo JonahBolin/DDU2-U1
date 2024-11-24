@@ -59,3 +59,7 @@ for (let i = 0; i < distances.length; i++) {
         }
     }
 }
+if (indexThatTheCityFurthestAwayHas != -1) {
+    const cityBoxesCollection = document.querySelectorAll(".cityBox");
+    cityBoxesCollection[indexThatTheCityFurthestAwayHas].classList.add("furthest")
+}
