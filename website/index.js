@@ -47,4 +47,6 @@ oneOfTheseBoxesWillBecomeBlackAndWhite.forEach(box => {
     if (box.textContent == `${userWritesACityName}`) {
         box.classList.add("target");
     }
-});
+});let maxDistanceCounter = 0;
+let indexThatTheCityFurthestAwayHas = -1;
+let cityFurthestAway = 0;
