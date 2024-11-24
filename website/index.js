@@ -52,5 +52,6 @@ let indexThatTheCityFurthestAwayHas = -1;
 let cityFurthestAway = 0;
 for (let i = 0; i < distances.length; i++) {
     if (userWritesACityName === cities[distances[i].city1].name || userWritesACityName === cities[distances[i].city2].name) {
+        cityFurthestAway = (userWritesACityName === cities[distances[i].city1].name) ? distances[i].city2 : distances[i].city1;
     }
 }
