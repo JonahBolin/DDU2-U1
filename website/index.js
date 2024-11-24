@@ -50,3 +50,5 @@ oneOfTheseBoxesWillBecomeBlackAndWhite.forEach(box => {
 });let maxDistanceCounter = 0;
 let indexThatTheCityFurthestAwayHas = -1;
 let cityFurthestAway = 0;
+for (let i = 0; i < distances.length; i++) {
+}
