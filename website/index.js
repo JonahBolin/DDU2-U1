@@ -30,11 +30,19 @@ for (i = 0; i < cities.length; i++) {
         h2.textContent = `${cities[i].name} (${cities[i].country})`
     }
 let city = cities.find(city => city.name == userWritesACityName);
+let matchedCityIndex = -1;
 
 if (city) {
     h2.textContent = `${city.name} (${city.country})`;
     title.textContent = `${city.name}`;
 
+    matchedCityIndex = cities.findIndex(city => city.name === userWritesACityName);
+    if (matchedCityIndex != -1) {
+        userWritesACityName = matchedCityIndex;
+        console.log(`Staden hittades. Indexet är: ${userWritesACityName}`);
+    } else {
+        console.log("Staden hittades ej.");
+    }
 } else {
     h2.textContent = `${userWritesACityName} finns inte i databasen`;
     title.textContent = "Not Found";
