@@ -76,4 +76,17 @@ for (let i = 0; i < distances.length; i++) {
 if (indexThatTheCityFurthestAwayHas != -1) {
     const cityBoxesCollection = document.querySelectorAll(".cityBox");
     cityBoxesCollection[indexThatTheCityFurthestAwayHas].classList.add("furthest")
+}let minDistanceCounter = Infinity;
+let indexThatTheCityClosestHas = -1;
+for (let i = 0; i < distances.length; i++) {
+    if (matchedCityIndex === distances[i].city1 || matchedCityIndex === distances[i].city2) {
+        let oppositeCityOfMatchedCityAndMaybeCityClosest = (distances[i].city1 === matchedCityIndex)
+            ? distances[i].city2
+            : distances[i].city1;
+
+        if (distances[i].distance < minDistanceCounter) {
+            minDistanceCounter = distances[i].distance;
+            indexThatTheCityClosestHas = oppositeCityOfMatchedCityAndMaybeCityClosest;
+        }
+    }
 }
