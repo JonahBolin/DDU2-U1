@@ -90,3 +90,22 @@ for (let i = 0; i < distances.length; i++) {
         }
     }
 }
+const cityBoxesList = document.querySelectorAll(".cityBox");
+
+function changePropertiesOfThreeCityBoxes(cityBoxElement, className, textContent) {
+    cityBoxElement.classList.add(className);
+    cityBoxElement.textContent += textContent
+}
+
+for (let i = 0; i < cityBoxesList.length; i++) {
+    const cityBoxElement = cityBoxesList[i];
+    if (cityBoxElement.textContent === cities[indexThatTheCityFurthestAwayHas].name) {
+        changePropertiesOfThreeCityBoxes(cityBoxElement, "furthest", ` ligger ${maxDistanceCounter / 10} mil bort `)
+    }
+    if (cityBoxElement.textContent === cities[indexThatTheCityClosestHas].name) {
+        changePropertiesOfThreeCityBoxes(cityBoxElement, "closest", ` ligger ${minDistanceCounter / 10} mil bort `)
+    }
+    if (cityBoxElement.textContent === cities[matchedCityIndex].name) {
+        changePropertiesOfThreeCityBoxes(cityBoxElement, "target", "")
+    }
+}
