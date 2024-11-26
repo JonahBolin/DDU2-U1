@@ -109,3 +109,13 @@ for (let i = 0; i < cityBoxesList.length; i++) {
         changePropertiesOfThreeCityBoxes(cityBoxElement, "target", "")
     }
 }
+const closestCityInSpan = document.getElementById("closest");
+const furthestCityInSpan = document.getElementById("furthest");
+
+function changeTextContentInSpanElements(cityWithCloseDistance, cityWithLongDistance) {
+    closestCityInSpan.textContent = cityWithCloseDistance;
+    furthestCityInSpan.textContent = cityWithLongDistance;
+}
+
+changeTextContentInSpanElements(`${cities[indexThatTheCityClosestHas].name}`, `${cities[indexThatTheCityFurthestAwayHas].name}`)
+
