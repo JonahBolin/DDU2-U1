@@ -46,6 +46,7 @@ if (city) {
 } else {
     h2.textContent = `${userWritesACityName} finns inte i databasen`;
     title.textContent = "Not Found";
+    h3.innerHTML = "";
 }
 
 //Gör så att knappen med staden som promptet anger ska få svart bakgrundsfärg
