@@ -29,6 +29,7 @@ for (i = 0; i < cities.length; i++) {
     if (userWritesACityName == cities[i].name) {
         h2.textContent = `${cities[i].name} (${cities[i].country})`
     }
+createTable();
 let city = cities.find(city => city.name == userWritesACityName);
 let matchedCityIndex = -1;
 
@@ -119,4 +120,66 @@ function changeTextContentInSpanElements(cityWithCloseDistance, cityWithLongDist
 }
 
 changeTextContentInSpanElements(`${cities[indexThatTheCityClosestHas].name}`, `${cities[indexThatTheCityFurthestAwayHas].name}`)
+
+function createTable() {
+    const table = document.querySelector("#table");
+    table.style.width = "100%";
+
+    const tableRows = cities.length;
+    const tableColumns = cities.length + 1;
+
+    table.style.gridTemplateColumns = `80px repeat(${tableColumns - 1}, 1fr)`;
+    table.style.gridTemplateRows = ` 20px repeat(${tableRows + 1}, 1fr)`;
+
+    for (let a = 0; a < tableColumns; a++) {
+        const columnContent = document.createElement("div");
+        columnContent.classList.add("head_column", "cell");
+        columnContent.style.display = "grid";
+        columnContent.style.alignItems = "center";
+
+        if (a === 0) {
+            columnContent.textContent = "";
+        } else {
+            columnContent.textContent = cities[a - 1].id;
+        }
+        table.appendChild(columnContent);
+    }
+
+    for (let i = 0; i < tableRows; i++) {
+        let rowContent = document.createElement("div");
+        rowContent.textContent = `${cities[i].id} - ${cities[i].name}`;
+        rowContent.classList.add("head_row", "cell");
+        rowContent.style.display = "grid";
+        rowContent.style.alignItems = "center";
+
+        table.appendChild(rowContent);
+
+        for (let j = 0; j < cities.length; j++) {
+            const cell = document.createElement("div");
+            cell.classList.add("cell");
+            cell.style.display = "grid";
+            cell.style.alignItems = "center";
+
+            if ((j + 1) % 2 === 1) {
+                cell.classList.add("even_col");
+            }
+
+            let distanceValue = null;
+            for (let distance of distances) {
+                if (distance.city1 === cities[i].id && distance.city2 === cities[j].id) {
+                    distanceValue = distance.distance;
+                    break;
+                }
+                if (distance.city2 === cities[i].id && distance.city1 === cities[j].id) {
+                    distanceValue = distance.distance;
+                }
+            }
+            if (distanceValue != null) {
+                cell.textContent = `${distanceValue / 10}`;
+            } else if (i === j) {
+                cell.textContent = "";
+            }
+            table.appendChild(cell);
+        }
+    }
 
