@@ -183,3 +183,30 @@ function createTable() {
         }
     }
 
+    const allRowContentDivs = document.querySelectorAll(".head_row");
+    const allCellDivs = document.querySelectorAll(".cell");
+
+    for (let k = 2; k < allRowContentDivs.length; k += 2) {
+        allRowContentDivs[k].classList.add("even_row");
+
+        for (let l = 0; l < cities.length; l++) {
+            const cellIndex = (k + 1) * (cities.length + 1) + (l + 1);
+            allCellDivs[cellIndex].classList.add("even_row");
+        }
+    }
+
+    let rowIndex = 0;
+
+    for (let row of allRowContentDivs) {
+        if (row.textContent == "0 - Strasbourg") {
+            row.classList.add("even_row");
+
+            for (let m = 0; m < cities.length; m++) {
+                const cellIndexForStrasbourgRow = (rowIndex + 1) * (cities.length + 1) + (m + 1);
+                allCellDivs[cellIndexForStrasbourgRow].classList.add("even_row");
+            }
+        }
+        rowIndex++;
+    }
+}
+
